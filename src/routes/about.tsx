@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import cristina from "@/assets/cristina.jpg.asset.json";
+import cristina from "@/assets/cristina.png";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -16,9 +16,9 @@ export const Route = createFileRoute("/about")({
         content: "Povestea și abordarea psihologului Cristina Bujoreanu.",
       },
       { property: "og:type", content: "profile" },
-      { property: "og:image", content: cristina.url },
+      { property: "og:image", content: cristina },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: cristina.url },
+      { name: "twitter:image", content: cristina },
     ],
   }),
   component: About,
@@ -34,7 +34,7 @@ function About() {
 
       <div className="mt-10 overflow-hidden rounded-[2rem] border border-border">
         <img
-          src={cristina.url}
+          src={cristina}
           alt="Cristina Bujoreanu"
           width={1200}
           height={1400}

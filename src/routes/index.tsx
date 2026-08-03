@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, HeartHandshake, Sprout, Sun } from "lucide-react";
-import cristina from "@/assets/cristina.jpg.asset.json";
+import cristina from "@/assets/cristina.png";
 import leaves from "@/assets/leaves.jpg";
 
 export const Route = createFileRoute("/")({
@@ -19,9 +19,9 @@ export const Route = createFileRoute("/")({
           "Ședințe de terapie pentru studenți și adulți, în București sau online. Spațiu sigur, LGBTQ+ friendly.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: cristina.url },
+      { property: "og:image", content: cristina },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: cristina.url },
+      { name: "twitter:image", content: cristina },
     ],
   }),
   component: Home,
@@ -68,7 +68,7 @@ function Home() {
             <div className="absolute -left-6 -top-6 h-40 w-40 rounded-full bg-accent/50 blur-2xl" />
             <div className="relative overflow-hidden rounded-[2rem] border border-border shadow-sm">
               <img
-                src={cristina.url}
+                src={cristina}
                 alt="Portret Cristina Bujoreanu"
                 width={1200}
                 height={1400}
