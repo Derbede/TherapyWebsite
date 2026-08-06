@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { Link, createFileRoute } from "@tanstack/react-router";
 import { GraduationCap, BookOpen, Users, ClipboardCheck } from "lucide-react";
 
 export const Route = createFileRoute("/studies")({
@@ -24,7 +24,8 @@ export const Route = createFileRoute("/studies")({
 
 const timeline = [
   {
-    year: "2026 — În curs",
+    year: "2026 — prezent",
+    ongoing: true,
     icon: BookOpen,
     title: "Formare în Psihoterapia Integrativă a Traumei",
     org: "Institutul pentru Studiul și Tratamentul Traumei (ISTT), București",
@@ -33,6 +34,7 @@ const timeline = [
   },
   {
     year: "2026",
+    ongoing: false,
     icon: ClipboardCheck,
     title: "Curs de evaluare a personalității",
     org: "De completat",
@@ -40,7 +42,8 @@ const timeline = [
     helps: "Sprijin în autocunoaștere și în înțelegerea tiparelor de personalitate și a dificultăților emoționale.",
   },
   {
-    year: "2025 — În curs",
+    year: "2025 — prezent",
+    ongoing: true,
     icon: GraduationCap,
     title: "Master în Psihologia Traumei",
     org: "Facultatea de Psihologie și Științele Educației, Universitatea din București",
@@ -48,7 +51,8 @@ const timeline = [
     helps: "Sprijin în evaluarea și gestionarea traumei, a anxietății și a stresului.",
   },
   {
-    year: "2025 — În curs",
+    year: "2025 — prezent",
+    ongoing: true,
     icon: Users,
     title: "Supervizare",
     org: "De completat",
@@ -57,6 +61,7 @@ const timeline = [
   },
   {
     year: "2022 — 2025",
+    ongoing: false,
     icon: GraduationCap,
     title: "Licență în Psihologie și Științe Cognitive",
     org: "Facultatea de Psihologie și Științele Educației, Universitatea din București",
@@ -104,9 +109,17 @@ function Studies() {
 
               <div className="py-4">
                 <div className="w-full rounded-2xl border border-border bg-card p-5 transition-shadow hover:shadow-md sm:p-6">
-                  <p className="text-xs font-medium uppercase tracking-widest text-primary">
-                    {item.year}
-                  </p>
+                  <div className="flex items-center justify-between gap-3">
+                    <p className="text-xs font-medium uppercase tracking-widest text-primary">
+                      {item.year}
+                    </p>
+                    {item.ongoing && (
+                      <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-accent/50 px-2.5 py-1 text-xs font-medium text-sage-deep">
+                        <span className="h-1.5 w-1.5 rounded-full bg-sage-deep" aria-hidden />
+                        În curs
+                      </span>
+                    )}
+                  </div>
                   <h3 className="mt-1.5 text-xl leading-snug">{item.title}</h3>
                   <p className="mt-0.5 text-sm font-medium text-foreground/80">{item.org}</p>
                   <p className="mt-2.5 text-sm leading-relaxed text-muted-foreground">
@@ -121,6 +134,19 @@ function Studies() {
           );
         })}
       </ol>
+
+      <div className="mt-16 rounded-3xl border border-border bg-secondary/40 px-6 py-6 text-center sm:px-10 sm:py-8">
+        <h2 className="text-2xl text-foreground sm:text-3xl">Facem primul pas împreună?</h2>
+        <p className="mx-auto mt-2 max-w-md text-muted-foreground">
+          Poți programa o ședință sau îmi poți scrie câteva rânduri. Sunt aici, fără grabă.
+        </p>
+        <Link
+          to="/contact"
+          className="mt-5 inline-flex items-center justify-center rounded-full bg-primary px-7 py-3 text-sm font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        >
+          Contactează-mă
+        </Link>
+      </div>
     </div>
   );
 }
