@@ -54,6 +54,7 @@ const packages = [
     cta: "Programează o ședință",
   },
 ];
+// idk 
 
 function Packages() {
   return (
