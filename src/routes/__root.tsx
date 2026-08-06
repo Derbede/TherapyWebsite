@@ -117,7 +117,7 @@ const NAV = [
 function Header() {
   const [open, setOpen] = useState(false);
   return (
-    <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur">
+    <header className="sticky top-0 z-40 border-b border-border/60 bg-secondary/80 backdrop-blur">
       <div className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 py-4 sm:px-8">
         <Link to="/" className="flex min-w-0 items-center gap-2 text-foreground">
           <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-secondary text-primary">
