@@ -42,7 +42,7 @@ function About() {
           Bună! Sunt Cristina.
         </h1>
         <p className="mt-4 max-w-xl text-lg text-muted-foreground">
-          Psiholog clinician și psihoterapeut în formare — cu plăcere aș lucra împreună cu tine.
+          Psiholog clinician și psihoterapeut în formare cu plăcere aș lucra împreună cu tine.
         </p>
       </header>
 
