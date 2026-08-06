@@ -61,7 +61,7 @@ function Home() {
               </Link>
             </div>
             <p className="mt-6 inline-flex items-center gap-2 rounded-full bg-secondary/60 px-4 py-2 text-sm text-foreground">
-              💛 <span>Ești student? Ședințe la <strong>100 lei</strong> (față de 200 lei).</span>
+             💚 <span>Ești student? Ședințe la <strong>100 lei</strong> (față de 200 lei).</span>
             </p>
           </div>
           <div className="relative">
@@ -129,7 +129,7 @@ function Home() {
               <p className="mt-3 max-w-lg text-muted-foreground">
                 Să înțelegi de ce anumite tipare se repetă în viața ta și cum să
                 îmbunătățești relațiile cu ceilalți — și mai ales cu tine însuți. Putem
-                porni în această călătorie împreună. ✨
+                porni în această călătorie împreună.
               </p>
             </div>
             <Link

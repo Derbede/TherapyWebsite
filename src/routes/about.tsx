@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Leaf } from "lucide-react";
 import cristina from "@/assets/cristina.png";
+import tree from "@/assets/tree.png";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -38,7 +39,7 @@ function About() {
       <header className="border-b border-border pb-10">
         <p className="text-xs uppercase tracking-widest text-muted-foreground">Despre mine</p>
         <h1 className="mt-3 max-w-2xl text-4xl leading-tight text-foreground sm:text-5xl">
-          Bună! 😄 Sunt Cristina.
+          Bună! Sunt Cristina.
         </h1>
         <p className="mt-4 max-w-xl text-lg text-muted-foreground">
           Psiholog clinician și psihoterapeut în formare — cu plăcere aș lucra împreună cu tine.
@@ -70,7 +71,7 @@ function About() {
           </ul>
         </aside>
 
-        <article className="min-w-0 space-y-8 text-base leading-relaxed text-foreground/90">
+        <article className="min-w-0 space-y-8 text-justify text-base leading-relaxed text-foreground/90">
           <p>
             Sunt psiholog clinician și psihoterapeut în formare. Mi-ar face mare plăcere să
             lucrăm împreună.
@@ -78,34 +79,47 @@ function About() {
 
           <div className="rounded-2xl border border-primary/20 bg-secondary/50 px-5 py-5 sm:px-6">
             <p>
-              💛 <strong>Ești student?</strong> Ofer ședințe la <strong>100 lei</strong> (față
-              de tariful standard de 200 lei) — pentru că terapia este o nevoie, nu un
+              <strong>Ești student?</strong> Ofer ședințe la <strong>100 lei</strong> (față
+              de tariful standard de 200 lei) pentru că terapia este o nevoie, nu un
               privilegiu.
             </p>
           </div>
 
-          <p>
-            📚 Mă pregătesc în cadrul programului de master și al formării în
-            <em> Psihoterapia Traumei</em> — ceea ce înseamnă că aduc în cabinet cunoștințe
-            actuale, validate, și o înțelegere profundă a modului în care experiențele
-            noastre ne modelează (și, în același timp, înțeleg viața de student).
-          </p>
+          <div className="relative py-2">
+            <img
+              src={tree}
+              alt=""
+              width={800}
+              height={800}
+              loading="lazy"
+              aria-hidden
+              className="pointer-events-none absolute top-1/2 left-1/2 z-0 h-72 w-72 -translate-x-1/2 -translate-y-1/2 object-contain opacity-[0.25] sm:h-96 sm:w-96"
+            />
+            <div className="relative z-10 space-y-8 text-foreground font-weight-bold">
+              <p>
+                Mă pregătesc în cadrul programului de master și al formării în
+                <em> Psihoterapia Traumei</em>, ceea ce înseamnă că aduc în cabinet cunoștințe
+                actuale, validate, și o înțelegere profundă a modului în care experiențele
+                noastre ne modelează (și, în același timp, înțeleg viața de student).
+              </p>
 
-          <p>
-            Îți dorești să te descoperi, să înțelegi de ce anumite tipare se repetă în viața
-            ta și cum să îmbunătățești comunicarea și relațiile pe care le ai cu ceilalți —
-            și mai ales cu tine însuți? Putem porni în această călătorie împreună. ✨
-          </p>
+              <p>
+                Îți dorești să te descoperi, să înțelegi de ce anumite tipare se repetă în viața
+                ta și cum să îmbunătățești comunicarea și relațiile pe care le ai cu ceilalți
+                și mai ales cu tine însuți? Putem porni în această călătorie împreună.
+              </p>
 
-          <p>
-            Cred că orice poveste merită să fie auzită fără judecată și încerc să creez un
-            spațiu sigur (<strong>LGBTQ+ friendly</strong>).
-          </p>
+              <p>
+                Cred că orice poveste merită să fie auzită fără judecată și încerc să creez un
+                spațiu sigur (<strong>LGBTQ+ friendly</strong>).
+              </p>
+            </div>
+          </div>
         </article>
       </div>
 
       <figure className="mt-16 text-center">
-        <blockquote className="mx-auto max-w-2xl font-serif text-2xl leading-snug text-foreground sm:text-3xl">
+        <blockquote className="mx-auto max-w-2xl rounded-3xl border border-border bg-secondary/45 px-8 py-12 font-serif text-2xl leading-snug text-foreground sm:px-10 sm:py-14 sm:text-3xl">
           „Terapia nu este despre a deveni altcineva. Este despre a ajunge acasă, la cine
           ești deja.”
         </blockquote>

@@ -131,7 +131,7 @@ function Packages() {
           Cum putem colabora?
         </h1>
         <p className="mt-5 text-muted-foreground">
-          💛 Cred că terapia este o nevoie, nu un privilegiu, de aceea ofer un tarif
+         💚 Cred că terapia este o nevoie, nu un privilegiu, de aceea ofer un tarif
           redus pentru studenți. Ședințele se plătesc după fiecare întâlnire.
         </p>
         <ul className="mt-5 space-y-2 text-sm text-muted-foreground">
