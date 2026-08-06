@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { GraduationCap, BookOpen } from "lucide-react";
+import { GraduationCap, BookOpen, Users, ClipboardCheck } from "lucide-react";
 
 export const Route = createFileRoute("/studies")({
   head: () => ({
@@ -8,7 +8,7 @@ export const Route = createFileRoute("/studies")({
       {
         name: "description",
         content:
-          "Formarea academică și profesională a psihologului Cristina Bujoreanu — Universitatea din București, Institutul pentru Studiul și Tratamentul Traumei.",
+          "Formarea academică și profesională a psihologului Cristina Bujoreanu, Universitatea din București, Institutul pentru Studiul și Tratamentul Traumei.",
       },
       { property: "og:title", content: "Studii și formare — Cristina Bujoreanu" },
       {
@@ -29,6 +29,15 @@ const timeline = [
     title: "Formare în Psihoterapia Integrativă a Traumei",
     org: "Institutul pentru Studiul și Tratamentul Traumei (ISTT), București",
     body: "Formare în psihotraumatologie, cu focus pe experiențele adverse timpurii și impactul lor asupra dezvoltării.",
+    helps: "Sprijin pentru traume, experiențe dificile din trecut și anxietatea care le însoțește.",
+  },
+  {
+    year: "2026",
+    icon: ClipboardCheck,
+    title: "Curs de evaluare a personalității",
+    org: "De completat",
+    body: "Descriere de adăugat.",
+    helps: "Sprijin în autocunoaștere și în înțelegerea tiparelor de personalitate și a dificultăților emoționale.",
   },
   {
     year: "2025 — În curs",
@@ -36,13 +45,23 @@ const timeline = [
     title: "Master în Psihologia Traumei",
     org: "Facultatea de Psihologie și Științele Educației, Universitatea din București",
     body: "Program de master, evaluare clinică și intervenție terapeutică în psihologia traumei.",
+    helps: "Sprijin în evaluarea și gestionarea traumei, a anxietății și a stresului.",
+  },
+  {
+    year: "2025 — În curs",
+    icon: Users,
+    title: "Supervizare",
+    org: "De completat",
+    body: "Descriere de adăugat.",
+    helps: "O practică atent supervizată, sigură și etică, în beneficiul fiecărei persoane cu care lucrez.",
   },
   {
     year: "2022 — 2025",
     icon: GraduationCap,
-    title: "Licență în Psihologie — Științe Cognitive",
+    title: "Licență în Psihologie și Științe Cognitive",
     org: "Facultatea de Psihologie și Științele Educației, Universitatea din București",
     body: "Licență scris: 9,93; Prezentare lucrare: 10. Lucrare de diplomă: „Rolul mediator al rezilienței în relația dintre experiențele adverse timpurii și burnoutul parental”.",
+    helps: "Bază solidă în înțelegerea modului în care gândurile, emoțiile și comportamentele ne influențează viața.",
   },
 ];
 
@@ -92,6 +111,9 @@ function Studies() {
                   <p className="mt-0.5 text-sm font-medium text-foreground/80">{item.org}</p>
                   <p className="mt-2.5 text-sm leading-relaxed text-muted-foreground">
                     {item.body}
+                  </p>
+                  <p className="mt-4 rounded-lg bg-secondary/50 px-3.5 py-2.5 text-sm leading-relaxed text-foreground/80">
+                    {item.helps}
                   </p>
                 </div>
               </div>
