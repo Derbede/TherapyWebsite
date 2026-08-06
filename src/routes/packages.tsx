@@ -33,7 +33,6 @@ type PackageItem = {
   description: string;
   features: string[];
   highlighted: boolean;
-  badge?: string;
   cta: string;
 };
 
@@ -55,7 +54,6 @@ const content: Record<Audience, PackageItem[]> = {
         "Psihoeducație despre traumă, stres și reziliență",
       ],
       highlighted: true,
-      badge: "Tarif student",
       cta: "Programează o ședință",
     },
     {
@@ -176,11 +174,6 @@ function Packages() {
             >
               <div className="flex items-baseline justify-between gap-3">
                 <h3 className="text-2xl">{p.name}</h3>
-                {p.badge && (
-                  <span className="rounded-full bg-primary px-3 py-1 text-xs font-medium text-primary-foreground">
-                    {p.badge}
-                  </span>
-                )}
               </div>
               <div className="mt-4 flex items-baseline gap-2">
                 <span className="font-serif text-5xl text-primary">{p.price}</span>
