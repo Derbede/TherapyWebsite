@@ -72,7 +72,7 @@ const timeline = [
 
 function Studies() {
   return (
-    <div className="mx-auto max-w-4xl px-5 py-16 sm:px-8 md:py-24">
+    <div className="mx-auto max-w-4xl px-5 pt-16 pb-6 sm:px-8 md:pt-24 md:pb-10">
       <p className="text-xs uppercase tracking-widest text-muted-foreground">Studiile mele</p>
       <h1 className="mt-3 text-4xl text-foreground sm:text-5xl">
         O formare construită din curiozitate.
