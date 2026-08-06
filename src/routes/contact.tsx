@@ -1,8 +1,23 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Mail, MapPin, Phone, Clock, Check } from "lucide-react";
+import { z } from "zod";
+
+export const SERVICE_OPTIONS = [
+  "Consiliere pentru studenți",
+  "Consiliere pentru adulți",
+  "Evaluare pentru studenți",
+  "Evaluare pentru adulți",
+] as const;
+
+export type ServiceOption = (typeof SERVICE_OPTIONS)[number];
+
+const contactSearchSchema = z.object({
+  serviciu: z.enum(SERVICE_OPTIONS).optional().catch(undefined),
+});
 
 export const Route = createFileRoute("/contact")({
+  validateSearch: contactSearchSchema,
   head: () => ({
     meta: [
       { title: "Contact și programări — Cristina Bujoreanu" },
@@ -26,6 +41,7 @@ export const Route = createFileRoute("/contact")({
 const PRACTICE_EMAIL = "cristinabujoreanu24@gmail.com";
 
 function Contact() {
+  const { serviciu } = Route.useSearch();
   const [sent, setSent] = useState(false);
   const [form, setForm] = useState({
     name: "",
@@ -34,6 +50,7 @@ function Contact() {
     city: "",
     phone: "",
     email: "",
+    service: serviciu ?? "Consiliere pentru studenți",
     format: "Fizic (București)",
     concern: "",
     other: "",
@@ -53,6 +70,7 @@ function Contact() {
         `Oraș: ${form.city}\n` +
         `Telefon: ${form.phone}\n` +
         `Email: ${form.email}\n` +
+        `Serviciu solicitat: ${form.service}\n` +
         `Preferință colaborare: ${form.format}\n\n` +
         `Problematica (ce te deranjează? de cât timp?):\n${form.concern}\n\n` +
         `Altceva de menționat:\n${form.other}`,
@@ -146,40 +164,21 @@ function Contact() {
                 placeholder="nume@example.com"
               />
             </Field>
+            <Field label="Serviciu solicitat" className="sm:col-span-2">
+              <RadioPills
+                name="service"
+                options={SERVICE_OPTIONS}
+                value={form.service}
+                onChange={(value) => update("service", value)}
+              />
+            </Field>
             <Field label="Preferință colaborare" className="sm:col-span-2">
-              <div className="flex flex-wrap gap-3">
-                {["Fizic (București)", "Online"].map((opt) => (
-                  <label
-                    key={opt}
-                    className={
-                      "flex cursor-pointer items-center gap-2 rounded-full border px-4 py-2 text-sm transition " +
-                      (form.format === opt
-                        ? "border-primary bg-secondary text-foreground"
-                        : "border-border bg-background text-muted-foreground hover:bg-secondary/50")
-                    }
-                  >
-                    <input
-                      type="radio"
-                      name="format"
-                      value={opt}
-                      checked={form.format === opt}
-                      onChange={(e) => update("format", e.target.value)}
-                      className="sr-only"
-                    />
-                    <span
-                      className={
-                        "grid h-4 w-4 place-items-center rounded-full border " +
-                        (form.format === opt ? "border-primary" : "border-muted-foreground/40")
-                      }
-                    >
-                      {form.format === opt && (
-                        <span className="h-2 w-2 rounded-full bg-primary" />
-                      )}
-                    </span>
-                    {opt}
-                  </label>
-                ))}
-              </div>
+              <RadioPills
+                name="format"
+                options={["Fizic (București)", "Online"] as const}
+                value={form.format}
+                onChange={(value) => update("format", value)}
+              />
             </Field>
             <Field
               label="Problematica (ce te deranjează? de cât timp?)"
@@ -254,6 +253,52 @@ function Contact() {
 
 const inputCls =
   "w-full rounded-xl border border-input bg-background px-4 py-2.5 text-sm text-foreground shadow-sm outline-none transition placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/20";
+
+function RadioPills<T extends string>({
+  name,
+  options,
+  value,
+  onChange,
+}: {
+  name: string;
+  options: readonly T[];
+  value: T;
+  onChange: (value: T) => void;
+}) {
+  return (
+    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+      {options.map((opt) => (
+        <label
+          key={opt}
+          className={
+            "flex w-full cursor-pointer items-center gap-2 rounded-full border px-4 py-2.5 text-sm transition " +
+            (value === opt
+              ? "border-primary bg-secondary text-foreground"
+              : "border-border bg-background text-muted-foreground hover:bg-secondary/50")
+          }
+        >
+          <input
+            type="radio"
+            name={name}
+            value={opt}
+            checked={value === opt}
+            onChange={() => onChange(opt)}
+            className="sr-only"
+          />
+          <span
+            className={
+              "grid h-4 w-4 place-items-center rounded-full border " +
+              (value === opt ? "border-primary" : "border-muted-foreground/40")
+            }
+          >
+            {value === opt && <span className="h-2 w-2 rounded-full bg-primary" />}
+          </span>
+          {opt}
+        </label>
+      ))}
+    </div>
+  );
+}
 
 function Field({
   label,
