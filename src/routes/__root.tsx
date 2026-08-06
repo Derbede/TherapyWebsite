@@ -123,7 +123,7 @@ function Header() {
           <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-secondary text-primary">
             <Leaf className="h-4 w-4" />
           </span>
-          <span className="min-w-0 truncate font-serif text-xl">Cristina Bujoreanu</span>
+          <span className="min-w-0 truncate font-serif text-xl">Cristina Bujoreanu - Pisholog</span>
         </Link>
         <nav className="hidden items-center gap-1 md:flex">
           {NAV.map((item) => (
