@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Leaf } from "lucide-react";
 import cristina from "@/assets/cristina.png";
-import tree from "@/assets/tree.png";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -85,35 +84,24 @@ function About() {
             </p>
           </div>
 
-          <div className="relative py-2">
-            <img
-              src={tree}
-              alt=""
-              width={800}
-              height={800}
-              loading="lazy"
-              aria-hidden
-              className="pointer-events-none absolute top-1/2 left-1/2 z-0 h-72 w-72 -translate-x-1/2 -translate-y-1/2 object-contain opacity-[0.25] sm:h-96 sm:w-96"
-            />
-            <div className="relative z-10 space-y-8 text-foreground font-weight-bold">
-              <p>
-                Mă pregătesc în cadrul programului de master și al formării în
-                <em> Psihoterapia Traumei</em>, ceea ce înseamnă că aduc în cabinet cunoștințe
-                actuale, validate, și o înțelegere profundă a modului în care experiențele
-                noastre ne modelează (și, în același timp, înțeleg viața de student).
-              </p>
+          <div className="space-y-8 text-foreground font-weight-bold">
+            <p>
+              Mă pregătesc în cadrul programului de master și al formării în
+              <em> Psihoterapia Traumei</em>, ceea ce înseamnă că aduc în cabinet cunoștințe
+              actuale, validate, și o înțelegere profundă a modului în care experiențele
+              noastre ne modelează (și, în același timp, înțeleg viața de student).
+            </p>
 
-              <p>
-                Îți dorești să te descoperi, să înțelegi de ce anumite tipare se repetă în viața
-                ta și cum să îmbunătățești comunicarea și relațiile pe care le ai cu ceilalți
-                și mai ales cu tine însuți? Putem porni în această călătorie împreună.
-              </p>
+            <p>
+              Îți dorești să te descoperi, să înțelegi de ce anumite tipare se repetă în viața
+              ta și cum să îmbunătățești comunicarea și relațiile pe care le ai cu ceilalți
+              și mai ales cu tine însuți? Putem porni în această călătorie împreună.
+            </p>
 
-              <p>
-                Cred că orice poveste merită să fie auzită fără judecată și încerc să creez un
-                spațiu sigur (<strong>LGBTQ+ friendly</strong>).
-              </p>
-            </div>
+            <p>
+              Cred că orice poveste merită să fie auzită fără judecată și încerc să creez un
+              spațiu sigur (<strong>LGBTQ+ friendly</strong>).
+            </p>
           </div>
         </article>
       </div>
