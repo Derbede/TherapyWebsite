@@ -30,7 +30,6 @@ export const Route = createFileRoute("/")({
 function Home() {
   return (
     <div>
-      {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-16 sm:px-8 md:grid-cols-2 md:py-24">
           <div>
@@ -79,7 +78,6 @@ function Home() {
         </div>
       </section>
 
-      {/* Values */}
       <section className="border-y border-border/60 bg-secondary/30">
         <div className="mx-auto grid max-w-6xl gap-6 px-5 py-14 sm:px-8 md:grid-cols-3">
           {[
@@ -110,8 +108,7 @@ function Home() {
         </div>
       </section>
 
-      {/* CTA banner */}
-      <section className="mx-auto max-w-6xl px-5 py-16 sm:px-8 md:py-24">
+      <section className="mx-auto max-w-6xl px-5 pt-16 pb-6 sm:px-8 md:pt-24 md:pb-10">
         <div className="relative overflow-hidden rounded-[2rem] border border-border">
           <img
             src={leaves}

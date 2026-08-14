@@ -97,7 +97,7 @@ function Contact() {
   }
 
   return (
-    <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 md:py-24">
+    <div className="mx-auto max-w-6xl px-5 pt-16 pb-6 sm:px-8 md:pt-24 md:pb-10">
       <div className="max-w-2xl">
         <p className="text-xs uppercase tracking-widest text-muted-foreground">
           Contact și programări

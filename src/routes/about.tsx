@@ -34,7 +34,7 @@ const credentials = [
 
 function About() {
   return (
-    <div className="mx-auto max-w-5xl px-5 py-16 sm:px-8 md:py-24">
+    <div className="mx-auto max-w-5xl px-5 pt-16 pb-6 sm:px-8 md:pt-24 md:pb-10">
       <header className="border-b border-border pb-10">
         <p className="text-xs uppercase tracking-widest text-muted-foreground">Despre mine</p>
         <h1 className="mt-3 max-w-2xl text-4xl leading-tight text-foreground sm:text-5xl">
