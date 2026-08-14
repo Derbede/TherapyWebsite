@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Leaf } from "lucide-react";
-import cristina from "@/assets/cristina.png";
+import cristina from "@/assets/cristina2.jpeg";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
