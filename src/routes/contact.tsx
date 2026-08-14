@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Mail, MapPin, Phone, Clock, Check } from "lucide-react";
+import { Mail, MapPin, Phone, Clock, Check, Loader2 } from "lucide-react";
 import { z } from "zod";
 
 export const SERVICE_OPTIONS = [
@@ -39,10 +39,13 @@ export const Route = createFileRoute("/contact")({
 });
 
 const PRACTICE_EMAIL = "cristinabujoreanu24@gmail.com";
+const WEB3FORMS_ACCESS_KEY = "5f18baa9-ff31-46fd-9b76-d99fe33a23ba";
+
+type Status = "idle" | "sending" | "sent" | "error";
 
 function Contact() {
   const { serviciu } = Route.useSearch();
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<Status>("idle");
   const [form, setForm] = useState({
     name: "",
     age: "",
@@ -54,29 +57,43 @@ function Contact() {
     format: "Fizic (București)",
     concern: "",
     other: "",
+    botcheck: "",
   });
 
   function update<K extends keyof typeof form>(key: K, value: (typeof form)[K]) {
     setForm((f) => ({ ...f, [key]: value }));
   }
 
-  function onSubmit(e: React.FormEvent) {
+  async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
-    const subject = encodeURIComponent(`Programare — ${form.name}`);
-    const body = encodeURIComponent(
-      `Nume și prenume: ${form.name}\n` +
-        `Vârstă: ${form.age}\n` +
-        `Gen: ${form.gender}\n` +
-        `Oraș: ${form.city}\n` +
-        `Telefon: ${form.phone}\n` +
-        `Email: ${form.email}\n` +
-        `Serviciu solicitat: ${form.service}\n` +
-        `Preferință colaborare: ${form.format}\n\n` +
-        `Problematica (ce te deranjează? de cât timp?):\n${form.concern}\n\n` +
-        `Altceva de menționat:\n${form.other}`,
-    );
-    window.location.href = `mailto:${PRACTICE_EMAIL}?subject=${subject}&body=${body}`;
-    setSent(true);
+    if (form.botcheck) return;
+    setStatus("sending");
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: `Programare nouă — ${form.name}`,
+          from_name: "Formular site Cristina Bujoreanu",
+          replyto: form.email,
+          "Nume și prenume": form.name,
+          Vârstă: form.age,
+          Gen: form.gender,
+          Oraș: form.city,
+          Telefon: form.phone,
+          Email: form.email,
+          "Serviciu solicitat": form.service,
+          "Preferință colaborare": form.format,
+          "Problematica (ce te deranjează? de cât timp?)": form.concern,
+          "Altceva de menționat": form.other,
+        }),
+      });
+      const data = await res.json();
+      setStatus(data.success ? "sent" : "error");
+    } catch {
+      setStatus("error");
+    }
   }
 
   return (
@@ -96,133 +113,167 @@ function Contact() {
       </div>
 
       <div className="mt-12 grid gap-8 lg:grid-cols-[1.2fr_1fr]">
-        <form
-          onSubmit={onSubmit}
-          className="rounded-3xl border border-border bg-card p-6 sm:p-8"
-        >
-          <div className="grid gap-5 sm:grid-cols-2">
-            <Field label="Nume și prenume" className="sm:col-span-2">
-              <input
-                required
-                value={form.name}
-                onChange={(e) => update("name", e.target.value)}
-                className={inputCls}
-                placeholder="Popescu Ana"
-              />
-            </Field>
-            <Field label="Vârstă">
-              <input
-                required
-                type="number"
-                min={14}
-                max={110}
-                value={form.age}
-                onChange={(e) => update("age", e.target.value)}
-                className={inputCls}
-                placeholder="24"
-              />
-            </Field>
-            <Field label="Gen">
-              <select
-                value={form.gender}
-                onChange={(e) => update("gender", e.target.value)}
-                className={inputCls}
-              >
-                <option>Feminin</option>
-                <option>Masculin</option>
-                <option>Non-binar</option>
-                <option>Prefer să nu spun</option>
-                <option>Altul</option>
-              </select>
-            </Field>
-            <Field label="Oraș">
-              <input
-                required
-                value={form.city}
-                onChange={(e) => update("city", e.target.value)}
-                className={inputCls}
-                placeholder="București"
-              />
-            </Field>
-            <Field label="Număr de telefon">
-              <input
-                required
-                type="tel"
-                value={form.phone}
-                onChange={(e) => update("phone", e.target.value)}
-                className={inputCls}
-                placeholder="+40 7XX XXX XXX"
-              />
-            </Field>
-            <Field label="Adresă de email" className="sm:col-span-2">
-              <input
-                required
-                type="email"
-                value={form.email}
-                onChange={(e) => update("email", e.target.value)}
-                className={inputCls}
-                placeholder="nume@example.com"
-              />
-            </Field>
-            <Field label="Serviciu solicitat" className="sm:col-span-2">
-              <RadioPills
-                name="service"
-                options={SERVICE_OPTIONS}
-                value={form.service}
-                onChange={(value) => update("service", value)}
-              />
-            </Field>
-            <Field label="Preferință colaborare" className="sm:col-span-2">
-              <RadioPills
-                name="format"
-                options={["Fizic (București)", "Online"] as const}
-                value={form.format}
-                onChange={(value) => update("format", value)}
-              />
-            </Field>
-            <Field
-              label="Problematica (ce te deranjează? de cât timp?)"
-              className="sm:col-span-2"
-            >
-              <textarea
-                required
-                rows={5}
-                value={form.concern}
-                onChange={(e) => update("concern", e.target.value)}
-                className={inputCls + " resize-y"}
-                placeholder="Descrie pe scurt ceea ce te aduce în terapie…"
-              />
-            </Field>
-            <Field
-              label="Dorești să îmi transmiți altceva? (opțional)"
-              className="sm:col-span-2"
-            >
-              <textarea
-                rows={3}
-                value={form.other}
-                onChange={(e) => update("other", e.target.value)}
-                className={inputCls + " resize-y"}
-                placeholder="Orice altceva ai vrea să știu înainte de prima noastră discuție."
-              />
-            </Field>
+        {status === "sent" ? (
+          <div className="flex flex-col items-center justify-center rounded-3xl border border-border bg-card p-10 text-center">
+            <span className="grid h-14 w-14 place-items-center rounded-full bg-secondary text-primary">
+              <Check className="h-7 w-7" />
+            </span>
+            <h2 className="mt-5 text-2xl text-foreground">Cererea a fost trimisă!</h2>
+            <p className="mt-2 max-w-sm text-muted-foreground">
+              Mulțumesc pentru mesaj. Îți voi răspunde în cel mult două zile lucrătoare
+              pentru a confirma o programare.
+            </p>
           </div>
-          <button
-            type="submit"
-            className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-medium text-primary-foreground transition hover:opacity-90 sm:w-auto"
+        ) : (
+          <form
+            onSubmit={onSubmit}
+            className="rounded-3xl border border-border bg-card p-6 sm:p-8"
           >
-            {sent ? (
-              <>
-                <Check className="h-4 w-4" /> Email deschis
-              </>
-            ) : (
-              "Trimite cererea"
+            <input
+              type="text"
+              tabIndex={-1}
+              autoComplete="off"
+              value={form.botcheck}
+              onChange={(e) => update("botcheck", e.target.value)}
+              className="hidden"
+              aria-hidden="true"
+            />
+            <div className="grid gap-5 sm:grid-cols-2">
+              <Field label="Nume și prenume" className="sm:col-span-2">
+                <input
+                  required
+                  value={form.name}
+                  onChange={(e) => update("name", e.target.value)}
+                  className={inputCls}
+                  placeholder="Popescu Ana"
+                />
+              </Field>
+              <Field label="Vârstă">
+                <input
+                  required
+                  type="number"
+                  min={14}
+                  max={110}
+                  value={form.age}
+                  onChange={(e) => update("age", e.target.value)}
+                  className={inputCls}
+                  placeholder="24"
+                />
+              </Field>
+              <Field label="Gen">
+                <select
+                  value={form.gender}
+                  onChange={(e) => update("gender", e.target.value)}
+                  className={inputCls}
+                >
+                  <option>Feminin</option>
+                  <option>Masculin</option>
+                  <option>Non-binar</option>
+                  <option>Prefer să nu spun</option>
+                  <option>Altul</option>
+                </select>
+              </Field>
+              <Field label="Oraș">
+                <input
+                  required
+                  value={form.city}
+                  onChange={(e) => update("city", e.target.value)}
+                  className={inputCls}
+                  placeholder="București"
+                />
+              </Field>
+              <Field label="Număr de telefon">
+                <input
+                  required
+                  type="tel"
+                  value={form.phone}
+                  onChange={(e) => update("phone", e.target.value)}
+                  className={inputCls}
+                  placeholder="+40 7XX XXX XXX"
+                />
+              </Field>
+              <Field label="Adresă de email" className="sm:col-span-2">
+                <input
+                  required
+                  type="email"
+                  value={form.email}
+                  onChange={(e) => update("email", e.target.value)}
+                  className={inputCls}
+                  placeholder="nume@example.com"
+                />
+              </Field>
+              <Field label="Serviciu solicitat" className="sm:col-span-2">
+                <RadioPills
+                  name="service"
+                  options={SERVICE_OPTIONS}
+                  value={form.service}
+                  onChange={(value) => update("service", value)}
+                />
+              </Field>
+              <Field label="Preferință colaborare" className="sm:col-span-2">
+                <RadioPills
+                  name="format"
+                  options={["Fizic (București)", "Online"] as const}
+                  value={form.format}
+                  onChange={(value) => update("format", value)}
+                />
+              </Field>
+              <Field
+                label="Problematica (ce te deranjează? de cât timp?)"
+                className="sm:col-span-2"
+              >
+                <textarea
+                  required
+                  rows={5}
+                  value={form.concern}
+                  onChange={(e) => update("concern", e.target.value)}
+                  className={inputCls + " resize-y"}
+                  placeholder="Descrie pe scurt ceea ce te aduce în terapie…"
+                />
+              </Field>
+              <Field
+                label="Dorești să îmi transmiți altceva? (opțional)"
+                className="sm:col-span-2"
+              >
+                <textarea
+                  rows={3}
+                  value={form.other}
+                  onChange={(e) => update("other", e.target.value)}
+                  className={inputCls + " resize-y"}
+                  placeholder="Orice altceva ai vrea să știu înainte de prima noastră discuție."
+                />
+              </Field>
+            </div>
+            <button
+              type="submit"
+              disabled={status === "sending"}
+              className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-medium text-primary-foreground transition hover:opacity-90 disabled:opacity-70 sm:w-auto"
+            >
+              {status === "sending" ? (
+                <>
+                  <Loader2 className="h-4 w-4 animate-spin" /> Se trimite…
+                </>
+              ) : (
+                "Trimite cererea"
+              )}
+            </button>
+            {status === "error" && (
+              <p className="mt-3 text-sm text-destructive">
+                Ceva nu a funcționat. Te rog încearcă din nou sau scrie-mi direct la{" "}
+                <a className="underline" href={`mailto:${PRACTICE_EMAIL}`}>
+                  {PRACTICE_EMAIL}
+                </a>
+                .
+              </p>
             )}
-          </button>
-          <p className="mt-3 text-xs text-muted-foreground">
-            Mesajul se va deschide în aplicația ta de email pentru a-l putea verifica
-            înainte de trimitere. Tot ce îmi împărtășești rămâne strict confidențial.
-          </p>
-        </form>
+            <p className="mt-3 text-xs text-muted-foreground">
+              Cererea se trimite direct către Cristina și rămâne strict confidențială.
+              Datele tale sunt folosite exclusiv pentru a-ți răspunde și a stabili o
+              programare — nu sunt partajate în scopuri de marketing. Formularul este
+              procesat printr-un serviciu securizat de trimitere a mesajelor.
+            </p>
+          </form>
+        )}
 
         <aside className="space-y-4">
           <InfoCard icon={MapPin} title="Cabinet">
