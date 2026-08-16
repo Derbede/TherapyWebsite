@@ -37,8 +37,8 @@ const timeline = [
     ongoing: false,
     icon: ClipboardCheck,
     title: "Curs de evaluare a personalității",
-    org: "De completat",
-    body: "Descriere de adăugat.",
+    org: "PsihoProfiles - Ticu Constantin",
+    body: "Stagiu de formare care oferă informații despre identificarea, evaluarea și relaționarea optimă cu persoanele din jur, în funcție de personalitate.",
     helps: "Sprijin în autocunoaștere și în înțelegerea tiparelor de personalitate și a dificultăților emoționale.",
   },
   {
@@ -55,9 +55,9 @@ const timeline = [
     ongoing: true,
     icon: Users,
     title: "Supervizare",
-    org: "De completat",
-    body: "Descriere de adăugat.",
-    helps: "O practică atent supervizată, sigură și etică, în beneficiul fiecărei persoane cu care lucrez.",
+    org: "Psiholog supervizor - Onețiu Florin",
+    body: "Întâlniri frecvente în care eu și alți colegi psihologi primim informații utile în practica de zi cu zi.",
+    helps: "O practică atent supervizată, sigură și etică, în beneficiul clienților mei din cabinet.",
   },
   {
     year: "2022 — 2025",

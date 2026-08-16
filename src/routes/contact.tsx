@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Mail, MapPin, Phone, Clock, Check, Loader2 } from "lucide-react";
+import { Mail, MapPin, Clock, Check, Loader2 } from "lucide-react";
 import { z } from "zod";
 
 export const SERVICE_OPTIONS = [
@@ -106,9 +106,8 @@ function Contact() {
           Hai să găsim un moment potrivit.
         </h1>
         <p className="mt-5 text-muted-foreground">
-          Completează formularul de mai jos și îți voi răspunde în cel mult două zile
-          lucrătoare pentru a confirma o programare. Pentru situații urgente, te rog să
-          suni direct.
+          Completează formularul de mai jos și îți voi răspunde în cel mai scurt timp posibil.
+          Pentru situații urgente, îmi poți scrie un mesaj direct pe Intagram.
         </p>
       </div>
 
@@ -286,15 +285,28 @@ function Contact() {
               {PRACTICE_EMAIL}
             </a>
           </InfoCard>
-          <InfoCard icon={Phone} title="Telefon">
-            <a className="text-primary hover:underline" href="tel:+40765757740">
-              +40 765 757 740
+          <InfoCard icon={InstagramIcon} title="Instagram">
+            <a
+              className="text-primary hover:underline"
+              href="https://www.instagram.com/call.me.crissa"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              @call.me.crissa
+            </a>
+          </InfoCard>
+          <InfoCard icon={TikTokIcon} title="TikTok">
+            <a
+              className="text-primary hover:underline"
+              href="https://www.tiktok.com/@call.me.crissa"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              @call.me.crissa
             </a>
           </InfoCard>
           <InfoCard icon={Clock} title="Program">
-            Luni — Vineri · 10:00 — 19:00
-            <br />
-            Sâmbătă · pe bază de programare
+            Luni - Vineri · 12:00 - 20:00
           </InfoCard>
         </aside>
       </div>
@@ -304,6 +316,38 @@ function Contact() {
 
 const inputCls =
   "w-full rounded-xl border border-input bg-background px-4 py-2.5 text-sm text-foreground shadow-sm outline-none transition placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/20";
+
+function InstagramIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+    >
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+    </svg>
+  );
+}
+
+function TikTokIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className={className}
+      aria-hidden="true"
+    >
+      <path d="M16.6 5.82a4.28 4.28 0 0 1-1.06-2.82h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5 2.6 2.6 0 0 1-2.6-2.6c0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64a5.68 5.68 0 0 0 5.69 5.7c3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3a4.36 4.36 0 0 1-3.24-1.48z" />
+    </svg>
+  );
+}
 
 function RadioPills<T extends string>({
   name,

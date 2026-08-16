@@ -97,7 +97,7 @@ const content: Record<Audience, PackageItem[]> = {
       price: "250 lei",
       unit: "50 de minute",
       description:
-        "Evaluare psihologică clinică pentru adulți: clarificarea simptomelor, orientare terapeutică și plan de intervenție.",
+        "Evaluare psihologică pentru adulți: clarificarea simptomelor, înțelegerea comportamentelor și planul de intervenție.",
       features: [
         "Evaluarea personalității",
         "Evaluare psihologică pentru autocunoaștere și dezvoltare personală",
@@ -130,8 +130,8 @@ function Packages() {
         <h1 className="mt-3 text-4xl text-foreground sm:text-5xl">
           Cum putem colabora?
         </h1>
-        <p className="mt-5 text-muted-foreground">
-         💚 Cred că terapia este o nevoie, nu un privilegiu, de aceea ofer un tarif
+        <p className="mt-5 text-base text-muted-foreground">
+         💚 În multe cazuri, terapia este o nevoie și nu ar trebui să fie un privilegiu, de aceea ofer un tarif
           redus pentru studenți. Ședințele se plătesc după fiecare întâlnire.
         </p>
         <ul className="mt-5 space-y-2 text-sm text-muted-foreground">
@@ -209,7 +209,7 @@ function Packages() {
 
       <p className="mt-10 text-sm text-muted-foreground">
         Pentru situații financiare deosebite, te rog să menționezi acest lucru când îmi
-        scrii. Vom găsi împreună o soluție.
+        scrii. Cu siguranță vom găsi împreună o soluție împreună.
       </p>
     </div>
   );

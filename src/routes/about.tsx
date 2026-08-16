@@ -72,35 +72,35 @@ function About() {
 
         <article className="min-w-0 space-y-8 text-justify text-base leading-relaxed text-foreground/90">
           <p>
-            Sunt psiholog clinician și psihoterapeut în formare. Mi-ar face mare plăcere să
-            lucrăm împreună.
+            Sunt Cristina, studentă și psiholog, în propriul proces de dezvoltare personală. Îmi doresc să 
+            ofer oamenilor alături de care lucrez profesionalism și, în același timp, empatie.
           </p>
 
           <div className="rounded-2xl border border-primary/20 bg-secondary/50 px-5 py-5 sm:px-6">
             <p>
-              <strong>Ești student?</strong> Ofer ședințe la <strong>100 lei</strong> (față
-              de tariful standard de 200 lei) pentru că terapia este o nevoie, nu un
-              privilegiu.
+              <strong>Cum ai putea să mă recunoști?</strong> Discut adesea despre importanța evenimentelor 
+              din copilărie, stimei de sine, relațiilor interumane și despre nevoia de odihnă. Rezonez foarte
+              mult cu tinerii, deoarece sunt și eu în această etapă a vieții și sunt de părere că <strong>nu este 
+              niciodată prea târziu</strong> să începi să te cunoști.
             </p>
           </div>
 
           <div className="space-y-8 text-foreground font-weight-bold">
             <p>
-              Mă pregătesc în cadrul programului de master și al formării în
-              <em> Psihoterapia Traumei</em>, ceea ce înseamnă că aduc în cabinet cunoștințe
-              actuale, validate, și o înțelegere profundă a modului în care experiențele
-              noastre ne modelează (și, în același timp, înțeleg viața de student).
+              <strong>Câteva lucruri despre mine:</strong> am de obicei în mână un latte cu caramel sărat, iar în pauzele mele
+              sunt la un picnic, mâncând o patiserie bună și făcând sudoku. Într-o seară ideală pentru mine mă
+              aflu alături de prietenii mei, jucând un joc de societate. 
             </p>
 
             <p>
-              Îți dorești să te descoperi, să înțelegi de ce anumite tipare se repetă în viața
-              ta și cum să îmbunătățești comunicarea și relațiile pe care le ai cu ceilalți
-              și mai ales cu tine însuți? Putem porni în această călătorie împreună.
+              Am avut șansa să cunosc oameni diferiți de-a lungul vieții, fiecare cu <strong>propriul său drum</strong> și am simțit
+              cât de multe putem învăța unii de la alții. Doar ascultând, putem înțelege esența unei persoane și îî
+              putem fi alături cu adevărat.
             </p>
 
             <p>
-              Cred că orice poveste merită să fie auzită fără judecată și încerc să creez un
-              spațiu sigur (<strong>LGBTQ+ friendly</strong>).
+              <strong>Cred că orice poveste merită să fie auzită fără judecată și încerc să creez un
+              spațiu sigur, indiferent de vârstă.</strong>
             </p>
           </div>
         </article>
@@ -114,7 +114,7 @@ function About() {
       </figure>
 
       <footer className="mt-16 flex flex-col items-start gap-4 border-t border-border pt-10 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-sm text-muted-foreground">
+        <p className="text-base text-muted-foreground">
           Vrei să afli mai multe despre formarea mea sau să programezi o ședință?
         </p>
         <div className="flex flex-wrap gap-3">

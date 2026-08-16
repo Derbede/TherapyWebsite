@@ -186,8 +186,7 @@ function Footer() {
             <span className="font-serif text-xl">Cristina Bujoreanu</span>
           </div>
           <p className="mt-3 max-w-xs text-sm text-muted-foreground">
-            Psiholog clinician și psihoterapeut în formare. Un spațiu sigur, cald și lipsit
-            de judecată — LGBTQ+ friendly.
+            Psiholog clinician și psihoterapeut în formare
           </p>
         </div>
         <div>

@@ -41,9 +41,9 @@ function Home() {
               <em className="not-italic text-primary">poți fi tu însuți.</em>
             </h1>
             <p className="mt-6 max-w-lg text-base leading-relaxed text-muted-foreground">
-              Bună! Sunt Cristina — psiholog clinician și psihoterapeut în formare în
-              Psihoterapia Traumei. Cred că orice poveste merită să fie auzită fără
-              judecată. Te aștept într-un spațiu cald, sigur și LGBTQ+ friendly.
+              Bună! Sunt Cristina, psiholog clinician și psihoterapeut în formare în
+              Psihoterapia Integrativă a Traumei. Cred că orice poveste merită să fie auzită fără
+              judecată. Te aștept într-un spațiu cald și primitor (LGBTQ+ friendly).
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
@@ -83,18 +83,18 @@ function Home() {
           {[
             {
               icon: HeartHandshake,
-              title: "Cald și confidențial",
+              title: "Răbdare și încredere",
               body: "Un spațiu în care poți vorbi liber, fără judecată, în ritmul tău.",
             },
             {
               icon: Sprout,
-              title: "Formare în Psihotraumatologie",
+              title: "Învățare continuă",
               body: "Cunoștințe actuale și validate despre traumă, reziliență și dezvoltare.",
             },
             {
               icon: Sun,
               title: "Fizic sau online",
-              body: "Ședințe la cabinetul din București sau prin video call, oriunde te-ai afla.",
+              body: "Ședințe în cabinetul din București sau online, oriunde te-ai afla.",
             },
           ].map((v) => (
             <div key={v.title} className="rounded-2xl border border-border bg-background p-6">
@@ -125,15 +125,17 @@ function Home() {
               </h2>
               <p className="mt-3 max-w-lg text-muted-foreground">
                 Să înțelegi de ce anumite tipare se repetă în viața ta și cum să
-                îmbunătățești relațiile cu ceilalți — și mai ales cu tine însuți. Putem
-                porni în această călătorie împreună.
+                îmbunătățești relațiile cu ceilalți și în special cu tine însuți.
+              </p>
+              <p className="mt-3 max-w-lg text-muted-foreground">
+                Când ești pregătit, putem porni în această călătorie împreună!
               </p>
             </div>
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 self-start rounded-full bg-primary px-5 py-3 text-sm font-medium text-primary-foreground transition hover:opacity-90 md:self-end"
+              className="inline-flex items-center gap-2 self-start rounded-full bg-primary px-10 py-3 text-base font-medium text-primary-foreground transition hover:opacity-90 md:self-end"
             >
-              Scrie-mi <ArrowRight className="h-4 w-4" />
+              Scrie-mi <ArrowRight className="h-5 w-5" />
             </Link>
           </div>
         </div>
